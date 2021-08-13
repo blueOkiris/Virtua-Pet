@@ -4,6 +4,8 @@
 
 A virtual python that you can take care of and interact with!
 
+![screenshot](/docs/img/screenshot-v1.png)
+
 ## Requirements
 
  - [cmake](https://cmake.org/download/) (in PATH) because SFML's build system is dumb
