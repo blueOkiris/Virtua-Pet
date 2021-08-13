@@ -20,14 +20,14 @@ SFML_URL :=	https://www.sfml-dev.org/files/SFML-2.5.1-windows-gcc-7.3.0-mingw-64
 ## Targets
 
 # Helper targets
-obj/%.o : src/%.cpp $(HFILES) SFML-2.5.1
+obj/%.o : src/%.cpp $(HFILES) SFML-2.5.1/include/SFML/Graphics.hpp
 	-mkdir obj
 	$(CPPC) -o $@ $(CPPFLAGS) $(INC) -c $<
 
 sfml.zip :
 	curl $(SFML_URL) -o sfml.zip
 
-SFML-2.5.1 : sfml.zip
+SFML-2.5.1/include/SFML/Graphics.hpp : sfml.zip
 	tar -xf sfml.zip
 	-copy-dlls.bat
 
@@ -36,6 +36,7 @@ clean :
 	-rm -rf obj/
 	-rm -rf SFML-2.5.1
 	-rm -rf sfml.zip
+	-rm -rf *.dll
 	-rm -rf $(OBJNAME)
 	-rmdir /q /s obj
 	-rmdir /q /s SFML-2.5.1
